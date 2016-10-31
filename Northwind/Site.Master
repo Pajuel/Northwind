@@ -1,0 +1,212 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Northwind.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Northwind</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="assets/css/Site.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Northwind</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/About">Acerca de</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="main-container" id="main-container">
+
+            <!-- #section:basics/sidebar -->
+            <div id="sidebar" class="sidebar col-sm-3 col-md-2">
+                <!-- /.sidebar-shortcuts -->
+                <!-- Menu -->
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+
+                <asp:Repeater ID="foo" DataSourceID="SiteMapDataSource1" EnableViewState="false" runat="server" OnItemDataBound="foo_ItemDataBound" OnPreRender="Repeater_PreRender">
+                    <HeaderTemplate>
+                        <ul class="nav nav-sidebar">
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <li runat="server" id="list">
+                            <asp:HyperLink runat="server" ID="lbOpcion" href='<%#Eval("url") %>' ToolTip='<%#Eval("description") %>'>
+
+                                    <i class='menu-icon glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>'></i>
+                                    <span class="menu-text"><%#Eval("Title") %> </span>
+                                     <span class='badge badge-warning <%#Eval("Url")%>'></span>
+
+                                       <b class='arrow <%#((SiteMapNode) Container.DataItem).ChildNodes.Count>0?"glyphicon glyphicon-chevron-down":"" %>'></b>
+                            </asp:HyperLink>
+
+                            <asp:Repeater ID="bar" DataSource='<%#((SiteMapNode) Container.DataItem).ChildNodes %>' runat="server" OnItemDataBound="foo_ItemDataBound" OnPreRender="Repeater_PreRender">
+                                <HeaderTemplate>
+                                    <b class="arrow"></b>
+                                    <ul class="submenu">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <li runat="server" id="list">
+                                        <asp:HyperLink runat="server" ID="lbOpcion" href='<%#Eval("url") %>' ToolTip='<%#Eval("description") %>'>
+                                                    <i class="menu-icon glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>"></i>
+                                                    <%#Eval("Title") %>
+                                                    <b class='arrow <%#((SiteMapNode) Container.DataItem).ChildNodes.Count>0?"glyphicon glyphicon-chevron-down":"" %>'></b>
+                                        </asp:HyperLink>
+
+                                        <asp:Repeater ID="bar" DataSource='<%#((SiteMapNode) Container.DataItem).ChildNodes %>' runat="server" OnItemDataBound="foo_ItemDataBound" OnPreRender="Repeater_PreRender">
+                                            <HeaderTemplate>
+                                                <b class="arrow"></b>
+                                                <ul class="submenu">
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <li runat="server" id="list">
+                                                    <asp:HyperLink runat="server" href='<%#Eval("url") %>' ToolTip='<%#Eval("description") %>'>
+                                                                    <i class="menu-icon glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>"></i>
+                                                                    <%#Eval("Title") %>
+                                                    </asp:HyperLink>
+                                                </li>
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                </ul>
+                                            </FooterTemplate>
+                                        </asp:Repeater>
+
+                                    </li>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </ul>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                        </li>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        </ul>
+                    </FooterTemplate>
+                </asp:Repeater>
+
+
+                <!-- /.nav-list -->
+
+                <!-- #section:basics/sidebar.layout.minimize -->
+                <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+                </div>
+
+                <!-- /section:basics/sidebar.layout.minimize -->
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                </script>
+            </div>
+
+            <!-- /section:basics/sidebar -->
+            <div class="main-content col-sm-9 col-md-10">
+                <!-- #section:basics/content.breadcrumbs -->
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <asp:SiteMapPath ID="SiteMapPath1" runat="server" CssClass="breadcrumb" PathSeparator=">">
+                        <RootNodeTemplate>
+                            <i class="ace-icon glyphicon glyphicon-home"></i>
+                            <a href='<%#Eval("Url") %>'><%#Eval("Title") %></a>
+                        </RootNodeTemplate>
+                        <CurrentNodeTemplate>
+                            <i class='<%# Eval("Url").ToString()!="/"?"":"glyphicon glyphicon-home" %>'></i>
+                            <asp:Label runat="server" class="active"><%# Eval("Title")%></asp:Label>
+                        </CurrentNodeTemplate>
+                    </asp:SiteMapPath>
+                    <!-- /.breadcrumb -->
+                    <!-- /.nav-search -->
+
+                    <!-- /section:basics/content.searchbox -->
+                </div>
+
+                <!-- /section:basics/content.breadcrumbs -->
+                <div class="page-content">
+                    <%if (CurrentNode != null)
+                        { %>
+                    <div class="page-header">
+                        <h1><%:CurrentNode.Title %>
+                            <%if (!string.IsNullOrEmpty(CurrentNode.Description))
+                                { %>
+                            <small>
+                                <i class="ace-icon fa fa-angle-double-right"></i>
+                                <%:CurrentNode.Description %>
+                            </small>
+                            <%} %>
+                        </h1>
+                    </div>
+                    <%} %>
+                    <!-- /.page-header -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.page-content -->
+                <hr />
+                <footer>
+                    <p>&copy; <%: DateTime.Now.Year %> - Northwind</p>
+                </footer>
+            </div>
+            <!-- /.main-content -->
+
+
+        </div>
+        <%--<div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Northwind</p>
+            </footer>
+        </div>--%>
+    </form>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap.min.js"></script>
+</body>
+</html>

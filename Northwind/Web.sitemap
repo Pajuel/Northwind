@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode visible="true" icono="" title="Principal" description="" url="/">
+		<siteMapNode visible="true" icono="glyphicon-apple" title="Productos">
+			<siteMapNode visible="true" icono="glyphicon-apple" title="Productos" description="Seleccione uno o varios criterios de búsqueda." url="/Productos/Productos"/>			
+			<siteMapNode visible="true" icono="glyphicon-tag" title="Categorias" description="Seleccione uno o varios criterios de búsqueda." url="/Productos/Categorias"/>
+		</siteMapNode>
+		<siteMapNode visible="true" icono="glyphicon-user" title="Contactos">
+			<siteMapNode visible="true" icono="glyphicon-user" title="Empleados" description="Seleccione uno o varios criterios de búsqueda." url="/Contactos/Empleados"/>
+			<siteMapNode visible="true" icono="glyphicon-piggy-bank" title="Clientes" description="Seleccione uno o varios criterios de búsqueda." url="/Contactos/Clientes"/>
+			<siteMapNode visible="true" icono="glyphicon-oil" title="Proveedores" description="Seleccione uno o varios criterios de búsqueda." url="/Contactos/Proveedores"/>
+			<siteMapNode visible="true" icono="glyphicon-plane" title="Envíos" description="Seleccione uno o varios criterios de búsqueda." url="/Contactos/Envios"/>
+		</siteMapNode>
+		<siteMapNode visible="true" icono="glyphicon-copy" title="Pedidos" description="Seleccione uno o varios criterios de búsqueda." url="/Pedidos/Pedidos"/>
+		<siteMapNode visible="true" icono="glyphicon-wrench" title="Configuración">
+			<siteMapNode visible="true" icono="glyphicon-globe" title="Geogefiaca">
+				<siteMapNode visible="true" icono="" title="Regiones" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geogefiaca/Regiones"/>
+				<siteMapNode visible="true" icono="" title="Territorios" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geogefiaca/Territorios"/>
+				<siteMapNode visible="true" icono="" title="Territorios Empleados" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geogefiaca/TerritoriosEmpleados"/>
+			</siteMapNode>
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>
