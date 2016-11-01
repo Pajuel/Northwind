@@ -18,15 +18,6 @@ body {
     white-space: normal;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"],
-input[type="select"] {
-    max-width: 280px;
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
@@ -264,4 +255,33 @@ no_such_element:-o-prefocus,
 .jumbotron {
     margin-left: -15px;
     padding-left: 15px;
+}
+
+.form-actions {
+    display: block;
+    background-color: #F5F5F5;
+    border-top: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 19px 20px 20px;
+}
+
+.align-right {
+    text-align: right!important;
+}
+
+.align-left {
+    text-align: left!important;
+}
+
+.align-center {
+    text-align: center!important;
+}
+
+.page-header i {
+    font-size: 18px;
+}
+
+.page-header h3 {
+    display: inline-block;
 }

@@ -100,5 +100,28 @@ namespace Data.DataAccessComponents
             }
 
         }
+        public static object EjecutarEscalar(DbCommand dbCommand, DbConnection connection = null)
+        {
+            using (var dbConnection = connection == null ? Provider.GetDbConnection(StringConnection) : connection)
+            {
+                if (dbConnection.State == ConnectionState.Closed) dbConnection.Open();
+                using (var dbTransaction = dbConnection.BeginTransaction())
+                {
+                    try
+                    {
+                        dbCommand.Connection = dbConnection;
+                        dbCommand.Transaction = dbTransaction;
+                        var objResult = dbCommand.ExecuteScalar();
+                        dbCommand.Dispose();
+                        return objResult;
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                }
+            }
+        }
     }
 }

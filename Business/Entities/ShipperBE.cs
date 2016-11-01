@@ -8,5 +8,8 @@ namespace Business.Entities
 {
     public class ShipperBE
     {
+        public int ShipperID { get; set; }
+        public string CompanyName { get; set; }
+        public string Phone { get; set; }
     }
 }
