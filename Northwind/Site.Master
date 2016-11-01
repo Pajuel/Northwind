@@ -12,10 +12,9 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="assets/css/Site.css" rel="stylesheet" />
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/Site.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -25,7 +24,6 @@
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="bootstrap" />
                 <asp:ScriptReference Name="respond" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
@@ -61,10 +59,9 @@
         <div class="main-container" id="main-container">
 
             <!-- #section:basics/sidebar -->
-            <div id="sidebar" class="sidebar col-sm-3 col-md-2">
-                <!-- /.sidebar-shortcuts -->
+            <div class="col-xs-2">
                 <!-- Menu -->
-                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                <%--<asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
 
                 <asp:Repeater ID="foo" DataSourceID="SiteMapDataSource1" EnableViewState="false" runat="server" OnItemDataBound="foo_ItemDataBound" OnPreRender="Repeater_PreRender">
                     <HeaderTemplate>
@@ -74,7 +71,7 @@
                         <li runat="server" id="list">
                             <asp:HyperLink runat="server" ID="lbOpcion" href='<%#Eval("url") %>' ToolTip='<%#Eval("description") %>'>
 
-                                    <i class='menu-icon glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>'></i>
+                                    <i class=' glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>'></i>
                                     <span class="menu-text"><%#Eval("Title") %> </span>
                                      <span class='badge badge-warning <%#Eval("Url")%>'></span>
 
@@ -89,7 +86,7 @@
                                 <ItemTemplate>
                                     <li runat="server" id="list">
                                         <asp:HyperLink runat="server" ID="lbOpcion" href='<%#Eval("url") %>' ToolTip='<%#Eval("description") %>'>
-                                                    <i class="menu-icon glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>"></i>
+                                                    <i class=" glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>"></i>
                                                     <%#Eval("Title") %>
                                                     <b class='arrow <%#((SiteMapNode) Container.DataItem).ChildNodes.Count>0?"glyphicon glyphicon-chevron-down":"" %>'></b>
                                         </asp:HyperLink>
@@ -102,7 +99,7 @@
                                             <ItemTemplate>
                                                 <li runat="server" id="list">
                                                     <asp:HyperLink runat="server" href='<%#Eval("url") %>' ToolTip='<%#Eval("description") %>'>
-                                                                    <i class="menu-icon glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>"></i>
+                                                                    <i class=" glyphicon <%#Eval("[icono]").ToString()==""?"glyphicon-triangle-right":Eval("[icono]") %>"></i>
                                                                     <%#Eval("Title") %>
                                                     </asp:HyperLink>
                                                 </li>
@@ -123,24 +120,126 @@
                     <FooterTemplate>
                         </ul>
                     </FooterTemplate>
-                </asp:Repeater>
+                </asp:Repeater>--%>
+                <ul class="nav nav-list fixed" style="top: 0px;">
 
+                    <li id="foo_list_2" class="dropdown-toggle">
+                        <a id="foo_lbOpcion_2" title="Productos" class="" href="#">
+                            <i class=" glyphicon glyphicon-apple"></i>
+                            <span class="menu-text xs-hidden">Productos </span>
+                            <b class="arrow lvl xs-hidden glyphicon glyphicon-chevron-down"></b>
+                        </a>
 
-                <!-- /.nav-list -->
+                        <ul class="submenu lvl">
 
-                <!-- #section:basics/sidebar.layout.minimize -->
-                <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-                </div>
+                            <li id="foo_bar_2_list_0" class="">
+                                <a id="foo_bar_2_lbOpcion_0" title="Productos" href="/Productos/Productos">
+                                    <i class=" glyphicon glyphicon-apple"></i>
+                                    <span class="xs-hidden">Productos</span>
+                                </a>
+                            </li>
+                            <li id="foo_bar_2_list_1" class="">
+                                <a id="foo_bar_2_lbOpcion_1" title="Categorias" href="/Productos/Categorias">
+                                    <i class=" glyphicon glyphicon-tag"></i>
+                                    <span class="xs-hidden">Categorias</span>
+                                </a>
+                            </li>
 
-                <!-- /section:basics/sidebar.layout.minimize -->
-                <script type="text/javascript">
-                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
-                </script>
+                        </ul>
+
+                    </li>
+
+                    <li id="foo_list_3" class="dropdown-toggle">
+                        <a id="foo_lbOpcion_3" title="Contactos" class="" href="#">
+                            <i class=" glyphicon glyphicon-user"></i>
+                            <span class="menu-text xs-hidden">Contactos</span>
+                            <b class="arrow lvl xs-hidden glyphicon glyphicon-chevron-down"></b>
+                        </a>
+
+                        <ul class="submenu lvl">
+
+                            <li id="foo_bar_3_list_0" class="">
+                                <a id="foo_bar_3_lbOpcion_0" title="Empleados" href="/Contactos/Empleados">
+                                    <i class=" glyphicon glyphicon-user"></i>
+                                    <span class="xs-hidden">Empleados</span>
+                                </a>
+                            </li>
+                            <li id="foo_bar_3_list_1" class="">
+                                <a id="foo_bar_3_lbOpcion_1" title="Clientes" href="/Contactos/Clientes">
+                                    <i class=" glyphicon glyphicon-piggy-bank"></i>
+                                    <span class="xs-hidden">Clientes</span>
+                                </a>
+                            </li>
+                            <li id="foo_bar_3_list_2" class="">
+                                <a id="foo_bar_3_lbOpcion_2" title="Proveedores" href="/Contactos/Proveedores">
+                                    <i class=" glyphicon glyphicon-oil"></i>
+                                    <span class="xs-hidden">Proveedores</span>
+                                </a>
+                            </li>
+                            <li id="foo_bar_3_list_3" class="">
+                                <a id="foo_bar_3_lbOpcion_3" title="Envíos" href="/Contactos/Envios">
+                                    <i class=" glyphicon glyphicon-plane"></i>
+                                    <span class="xs-hidden">Envíos</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="foo_list_4" class="">
+                        <a id="foo_lbOpcion_4" title="Pedidos" class="" href="/Pedidos/Pedidos">
+                            <i class=" glyphicon glyphicon-copy"></i>
+                            <span class="menu-text xs-hidden">Pedidos</span>
+                        </a>
+                    </li>
+
+                    <li id="foo_list_5" class="dropdown-toggle">
+                        <a id="foo_lbOpcion_11" title="Configuración" class="" href="#">
+                            <i class=" glyphicon glyphicon-wrench"></i>
+                            <span class="menu-text xs-hidden">Configuración</span>
+                            <b class="arrow lvl1 xs-hidden glyphicon glyphicon-chevron-down"></b>
+                        </a>
+
+                        
+                        <ul class="submenu lvl1">
+
+                            <li id="foo_bar_5_list_0" class="dropdown-toggle-sub">
+                                <a id="foo_bar_5_lbOpcion_0" title="Geografica" class="" href="#">
+                                    <i class=" glyphicon glyphicon-globe"></i>
+                                    <span class="xs-hidden">Geografica</span>
+                                    <b class="arrow lvl2 xs-hidden glyphicon glyphicon-chevron-down"></b>
+                                </a>
+
+                                <ul class="submenu lvl2">
+
+                                    <li id="foo_bar_5_bar_0_list_0" title="Regiones" class="">
+                                        <a href="/Configuracion/Geografica/Regiones">
+                                            <i class=" glyphicon glyphicon-triangle-right"></i>
+                                            <span class="xs-hidden">Regiones</span>
+                                        </a>
+                                    </li>
+
+                                    <li id="foo_bar_5_bar_0_list_1" title="Territorios" class="">
+                                        <a href="/Configuracion/Geografica/Territorios">
+                                            <i class=" glyphicon glyphicon-triangle-right"></i>
+                                            <span class="xs-hidden">Territorios</span>
+                                        </a>
+                                    </li>
+
+                                    <li id="foo_bar_5_bar_0_list_2" title="Territorios Empleados" class="">
+                                        <a href="/Configuracion/Geografica/TerritoriosEmpleados">
+                                            <i class=" glyphicon glyphicon-triangle-right"></i>
+                                            <span class="xs-hidden">Territorios Empleados</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
             <!-- /section:basics/sidebar -->
-            <div class="main-content col-sm-9 col-md-10">
+            <div class="main-content col-xs-10">
                 <!-- #section:basics/content.breadcrumbs -->
                 <div class="breadcrumbs" id="breadcrumbs">
                     <asp:SiteMapPath ID="SiteMapPath1" runat="server" CssClass="breadcrumb" PathSeparator=">">
@@ -206,7 +305,42 @@
             </footer>
         </div>--%>
     </form>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(".dropdown-toggle").click(function () {
+            $(this).find(".arrow.lvl").toggleClass("glyphicon-chevron-down");
+            $(this).find(".arrow.lvl").toggleClass("glyphicon-chevron-up");
+            $(this).find(".submenu.lvl").toggleClass("active");
+        });
+        var sub = false;
+        var subActive = false;
+        $(".dropdown-toggle").click(function () {
+            if (!sub) {
+                $(this).find(".arrow.lvl1").toggleClass("glyphicon-chevron-down");
+                $(this).find(".arrow.lvl1").toggleClass("glyphicon-chevron-up");
+                $(this).find(".submenu.lvl1").toggleClass("active");
+            }
+            else {
+                sub = false;
+            }
+        });
+        $(".dropdown-toggle-sub").click(function () {
+            sub = true;
+            if (subActive) {
+                $(this).find(".arrow.lvl2").addClass("glyphicon-chevron-down");
+                $(this).find(".arrow.lvl2").removeClass("glyphicon-chevron-up");
+                $(this).find(".submenu.lvl2").removeClass("active");
+                subActive = false;
+            }
+            else {
+                $(this).find(".arrow.lvl2").removeClass("glyphicon-chevron-down");
+                $(this).find(".arrow.lvl2").addClass("glyphicon-chevron-up");
+                $(this).find(".submenu.lvl2").addClass("active");
+                subActive = true;
+            }
+        });
+    </script>
 </body>
 </html>

@@ -13,10 +13,10 @@
 		</siteMapNode>
 		<siteMapNode visible="true" icono="glyphicon-copy" title="Pedidos" description="Seleccione uno o varios criterios de búsqueda." url="/Pedidos/Pedidos"/>
 		<siteMapNode visible="true" icono="glyphicon-wrench" title="Configuración">
-			<siteMapNode visible="true" icono="glyphicon-globe" title="Geogefiaca">
-				<siteMapNode visible="true" icono="" title="Regiones" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geogefiaca/Regiones"/>
-				<siteMapNode visible="true" icono="" title="Territorios" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geogefiaca/Territorios"/>
-				<siteMapNode visible="true" icono="" title="Territorios Empleados" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geogefiaca/TerritoriosEmpleados"/>
+			<siteMapNode visible="true" icono="glyphicon-globe" title="Geografica">
+				<siteMapNode visible="true" icono="glyphicon-triangle-right" title="Regiones" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geografica/Regiones"/>
+				<siteMapNode visible="true" icono="glyphicon-triangle-right" title="Territorios" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geografica/Territorios"/>
+				<siteMapNode visible="true" icono="glyphicon-triangle-right" title="Territorios Empleados" description="Seleccione uno o varios criterios de búsqueda." url="/Configuracion/Geografica/TerritoriosEmpleados"/>
 			</siteMapNode>
 		</siteMapNode>
 	</siteMapNode>
